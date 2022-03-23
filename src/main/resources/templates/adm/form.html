@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Administrador</title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+ <style>
+ 
+ body{
+ 	 background-color: #000000;
+ 	 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23dddcdd' fill-opacity='0.23'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
+ 
+ }
+ 	form{
+ 	
+ 		position:absolute;
+ 		top:25%;
+ 		padding-left:33% !important;
+ 		
+ 		
+ 	
+ 	
+ 	}
+ 	
+
+    
+    .msgsucesso{
+    width:50%;
+    text-align:center;
+    margin-top: 25%;
+    margin-left: 25%;
+    background-color: green;
+    color: white;
+    padding: 30px;
+    font-size: 18px;
+    border-radius: 18px;
+     	}
+    
+    .msgerro{
+    width:50%;
+    text-align:center;
+    margin-top: 25%;
+    margin-left: 25%;
+    background-color: red;
+    color: white;
+    padding: 30px;
+    font-size: 18px;
+    border-radius: 18px;
+    	
+    	
+    }
+    
+    .nav-wrapper{
+    	background-color: darkblue !important;
+    	
+    
+    }
+    
+    .brand-logo{
+    
+    	margin-left:20px !important;
+    
+    }
+    
+    button{
+    	background-color: darkblue !important;
+    }
+    
+    label{
+    	color:white !important;
+    	font-size:17px !important;
+    
+    
+    }
+    
+    input{
+    	color:white !important;
+    
+    
+    }
+    
+    
+    
+    
+ 	
+ 
+ </style>
+
+
+</head>
+<body>
+
+<div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Gamer Guide</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html">Lista</a></li>
+          <li><a href="badges.html">Inicio</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+        
+
+<div class="row">
+<h3 style="text-align: center; margin-top:100px; color:white;">Cadastro Administrador</h3>
+    <form class="col s12" action="salvarAdm" method="post">
+    
+      <div class="row">
+        <div class="input-field col s6">
+          <input name="nome" type="text" class="validate" required>
+          <label for="first_name">Insira seu nome</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input name="senha" type="password" class="validate" required>
+          <label for="password">Insira sua senha</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input name="email" type="email" class="validate" required>
+          <label for="email">Insira teu email</label>
+        </div>
+      </div>
+      <div class="row">
+      
+    
+      </div>
+      
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">play_arrow</i>
+    <br>
+    
+    <!-- <th block th:include="fragments/mensagem"></th:block>-->
+  </button>
+    </form>
+    
+  </div>
+  
+	<div th:replace="fragments/mensagem">
+	
+	</div>
+    
+   
+  
+
+</body>
+</html>
