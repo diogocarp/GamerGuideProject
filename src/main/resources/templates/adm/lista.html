@@ -2,62 +2,35 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro de Administrador</title>
-<!-- Compiled and minified CSS -->
+<title>GamerGuide</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-<!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- 
- <style>
- 
- body{
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+	.pagination{
+		position:absolute;
+		top:90%;
+		left:43%;
+		
+		
+	
+	}
+	.formulario{
+		width:60%;
+		margin-left:20%;
+		color:white;
+		background-color:blue;
+		
+		
+		
+	
+	}
+	 body{
  	 background-color: #000000;
  	 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23dddcdd' fill-opacity='0.23'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
- 
- }
- 	form{
- 	
- 		position:absolute;
- 		top:25%;
- 		padding-left:33% !important;
- 		
- 		
- 	
- 	
- 	}
- 	
-
-    
-    .msgsucesso{
-    width:50%;
-    text-align:center;
-    margin-top: 25%;
-    margin-left: 25%;
-    background-color: green;
-    color: white;
-    padding: 30px;
-    font-size: 18px;
-    border-radius: 18px;
-     	}
-    
-    .msgerro{
-    width:50%;
-    text-align:center;
-    margin-top: 25%;
-    margin-left: 25%;
-    background-color: red;
-    color: white;
-    padding: 30px;
-    font-size: 18px;
-    border-radius: 18px;
-    	
-    	
-    }
-    
-    .nav-wrapper{
+	}
+	
+	.nav-wrapper{
     	background-color: darkblue !important;
     	
     
@@ -69,38 +42,13 @@
     
     }
     
-    button{
-    	background-color: darkblue !important;
-    }
-    
-    label{
-    	color:white !important;
-    	font-size:17px !important;
-    
-    
-    }
-    
-    input{
-    	color:white !important;
-    
-    
-    }
-    
-  .page-footer{
+    .page-footer{
   
   	    margin-top: 32%;
   	    background-color: darkblue;
   }
-      
-    
-    
-    
-    
- 	
- 
- </style>
 
-
+</style>
 </head>
 <body>
 
@@ -115,51 +63,54 @@
       </div>
     </nav>
   </div>
-        
 
-<div class="row">
-<h3 style="text-align: center; margin-top:100px; color:white;">Cadastro Administrador</h3>
-    <form class="col s12" action="salvarAdm" method="post">
-    
-      <div class="row">
-        <div class="input-field col s6">
-          <input name="nome" type="text" class="validate" th:value="${adm?.nome}" required>
-          <label for="first_name">Insira seu nome</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input name="senha" type="password" class="validate" th:value="${adm?.senha}" required>
-          <label for="password">Insira sua senha</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input name="email" type="email" class="validate" th:value="${adm?.email}" required>
-          <label for="email">Insira teu email</label>
-        </div>
-      </div>
-      <div class="row">
-      
-    
-      </div>
-      
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">play_arrow</i>
-    <br>
-    
-    <!-- <th block th:include="fragments/mensagem"></th:block>-->
-  </button>
-    </form>
-    
-  </div>
-  
-	<div th:replace="fragments/mensagem">
-	
+<section>
+	<div class="formulario">
+	  <table>
+        <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Excluir</th>
+              <th>Alterar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr th:each="adm:${admins}">
+            <td th:text="${adm.id}"></td>
+            <td th:text="${adm.nome}"></td>
+            <td th:text="${adm.email}"></td>
+            <td><a th:href="@{/excluirAdm(id=${adm.id})}">Excluir</a></td>
+		<td><a th:href="@{/alterarAdm(id=${adm.id})}">Alterar</a></td>
+            
+          </tr>
+        
+        </tbody>
+      </table>
 	</div>
-	
-	
-        <footer class="page-footer">
+
+
+</section>
+<section>
+  <ul class="pagination">
+  
+    <li th:class="${paginaAtual == 1 ? 'disabled' : ''}">
+    <a th:href="${paginaAtual > 1 ? paginaAtual - 1 : '#'}">
+    <i class="material-icons">chevron_left</i></a></li>
+
+    <li th:each="p:${numPaginas}" th:class="${paginaAtual == p ? 'active black' : 'waves-effect'} "><a th:href="${p}"><span th:text="${p}"></span></a></li>
+    
+    <li th:class="${paginaAtual == totalPaginas ? 'disabled' : ''}">
+    <a th:href="${paginaAtual < totalPaginas ? paginaAtual + 1 : '#'}">
+    <i class="material-icons">chevron_right</i></a></li>
+    
+  	</ul>
+  
+  </section>
+  
+  <footer class="page-footer">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -183,10 +134,6 @@
             </div>
           </div>
         </footer>
-            
-    
-   
-  
 
 </body>
 </html>

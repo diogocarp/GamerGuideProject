@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import br.senai.sp.cfp138.gamerguide.util.HashUtil;
 import lombok.Data;
 
 // para gerar getters and setters
@@ -28,4 +29,13 @@ public class Administrador {
 	private String email; 
 	@NotEmpty
 	private String senha; 
+	
+	//metodo para setar a senha aplicando hash
+	public void setSenha(String senha) {
+		
+		// aplica o hash e "seta" a senha no objeto
+		this.senha = HashUtil.hash256(senha);
+		
+		
+	}
 }
