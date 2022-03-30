@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro de Administrador</title>
+<title>Formulário Novo Jogo</title>
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -15,42 +15,36 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-	
- 
- 
 
 </head>
 <body>
 
-<div th:replace="fragments/padrao :: cabecalho"></div>
+<div th:replace="fragments/padraoGame :: cabecalho"></div>
         
 
 <div class="row">
-<h3 style="text-align: center; margin-top:100px; color:white;">Cadastro Administrador</h3>
-    <form class="col s12" action="salvarAdm" method="post">
+<h3 style="text-align: center; margin-top:100px; color:white;">Cadastro Jogo</h3>
+    <form class="col s12" action="salvarGame" method="post">
     
       <div class="row">
         <div class="input-field col s6">
-          <input name="nome" type="text" class="validate" th:value="${adm?.nome}" required>
-          <label for="first_name">Insira seu nome</label>
+          <input name="nome" type="text" class="validate" th:value="${game?.nome}" required>
+          <label for="first_name">Insira o Nome do Jogo</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input name="senha" type="password" class="validate" >
-          <label for="password">Insira sua senha</label>
+          <input name="palavraChave" type="text" class="validate" th:value="${game?.palavraChave}" required>
+          <label for="keyword">Insira as palavras-chave</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input name="email" type="email" class="validate" th:value="${adm?.email}" required>
-          <label for="email">Insira teu email</label>
+          <input name="descricao" type="text" class="validate" th:value="${game?.descricao}" required>
+          <label for="descricao">Insira a Descrição do Jogo</label>
         </div>
       </div>
-      <div class="row">
-      
     
-      </div>
       
       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right">play_arrow</i>
@@ -60,14 +54,14 @@
   </button>
     </form>
     
-  </div>
+   </div>
   
-	<div th:replace="fragments/mensagem">
+	<!--<div th:replace="fragments/mensagem2">
 	
-	</div>
+	</div>-->
 	
 	
-       <footer th:replace="fragments/padrao :: rodape"></footer>
+       <footer th:replace="fragments/padraoGame :: rodape"></footer> 
             
     
    

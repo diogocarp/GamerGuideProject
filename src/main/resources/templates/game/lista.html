@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div th:replace="fragments/padrao :: cabecalho"></div>
+<div th:replace="fragments/padraoGame :: cabecalho"></div>
 
 <section>
 	<div class="formulario">
@@ -22,19 +22,21 @@
           <tr>
               <th>Id</th>
               <th>Nome</th>
-              <th>Email</th>
+              <th>Descrição</th>
+              <th>Palavras-Chave</th>
               <th>Excluir</th>
               <th>Alterar</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr th:each="adm:${admins}">
-            <td th:text="${adm.id}"></td>
-            <td th:text="${adm.nome}"></td>
-            <td th:text="${adm.email}"></td>
-            <td><a th:href="@{/excluirAdm(id=${adm.id})}">Excluir</a></td>
-		<td><a th:href="@{/alterarAdm(id=${adm.id})}">Alterar</a></td>
+          <tr th:each="game:${games}">
+            <td th:text="${game.id}"></td>
+            <td th:text="${game.nome}"></td>
+            <td th:text="${game.descricao}"></td>
+            <td th:text="${game.palavraChave}"></td>
+            <td><a th:href="@{/excluirGame(id=${game.id})}">Excluir</a></td>
+		<td><a th:href="@{/alterarGame(id=${game.id})}">Alterar</a></td>
             
           </tr>
         
@@ -61,7 +63,7 @@
   
   </section>
   
-  <footer th:replace="fragments/padrao :: rodape"></footer>
+  <footer th:replace="fragments/padraoGame :: rodape"></footer>
 
 </body>
 </html>

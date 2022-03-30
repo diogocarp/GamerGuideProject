@@ -38,4 +38,12 @@ public class Administrador {
 		
 		
 	}
+	
+	// método para "setar" a senha sem aplicar o hash 
+	public void setSenhaComHash(String hash) {
+		
+		// "seta" o hash na senha
+		this.senha = hash;
+		
+	}
 }

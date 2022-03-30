@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>padrão</title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+ <link type="text/css" href="/css/style.css" rel="stylesheet">	
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<div class="navbar-fixed" th:fragment="cabecalho">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">GAMER GUIDE</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/listarGame/1">LISTA</a></li>
+          <li><a href="/formGame">CADASTRO</a></li>
+          <li><a href="/indexGame">INICIO</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  
+  <footer class="page-footer" th:fragment="rodape">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">GamerGuide</h5>
+                <p class="grey-text text-lighten-4">Loren Ipsum Dolor Atset Amenum Cadret Salute Maneion</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Redes Sociais</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Instagram</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">11 960550139</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">gamerguide@gmail.com</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2022 Copyright - GamerGuide
+            </div>
+          </div>
+        </footer>
+
+</body>
+</html>

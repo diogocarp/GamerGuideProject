@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.senai.sp.cfp138.gamerguide.model.Administrador;
 import br.senai.sp.cfp138.gamerguide.repository.AdminRepository;
+import br.senai.sp.cfp138.gamerguide.util.HashUtil;
 
 
 @Controller
@@ -49,7 +50,38 @@ public class AdministradorController {
 				return "redirect:formAdm";
 				
 			}
+			
+			// verifica se esta sendo feita uma alteração ao invés de uma inserção 
+			boolean alteracao = admin.getId() != null ? true : false;
+			
+			// verifica se a senha está vazia
+			if(admin.getSenha().equals(HashUtil.hash256(""))) {
+				
+				// se não for alteração, eu defino a= primeira parte do email como senha 
+				if(!alteracao) {
+					
+					//extrai a parte do email antes do @
+					String parte = admin.getEmail().substring(0, admin.getEmail().indexOf("@"));
+					
+					// define a senha dp admin
+					admin.setSenha(parte);
+					
+				}else {
+					
+					//busca a senha atual
+					String hash = repository.findById(admin.getId()).get().getSenha();
+					
+					// "seta" a senha com hash 
+					admin.setSenhaComHash(hash);
+					
+				}
+				
+				
+				
+			}
+			
 			try {
+			
 			//salva o admin
 			repository.save(admin);
 			attr.addFlashAttribute("mensagemSucesso", "Adminstrador cadastrado com sucesso . ID: "+admin.getId());
