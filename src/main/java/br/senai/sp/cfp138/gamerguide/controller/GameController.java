@@ -98,6 +98,15 @@ public class GameController {
 		
 	}
 	
+	@RequestMapping("buscarGame")
+	public String buscarGame(String palavraChave, Model model) {
+		
+			model.addAttribute("games", repository.buscarChave("%"+palavraChave+"%"));
+			return "game/lista";
+		
+		
+	}
+	
 	
 	
 	

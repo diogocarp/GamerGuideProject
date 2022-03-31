@@ -56,6 +56,11 @@
     .nav-wrapper{
     	background-color: darkblue !important;
     	
+    	
+    
+    }
+    nav .nav-wrapper{
+    	height:130% !important;
     
     }
     
@@ -112,6 +117,16 @@
 		
 	
 	}
+	
+	.pesquisa {
+     color: black !important;
+     width: 300px !important;
+     margin-bottom: 30px !important;
     
-    
+	}
+	
+	.botao{
+		margin-left:350px !important;
+	
+	}
     
