@@ -13,5 +13,5 @@ public interface GameRepository extends PagingAndSortingRepository<TipoGame, Lon
 	@Query("SELECT g FROM TipoGame g WHERE g.palavraChave LIKE %:p%")
 	public List<TipoGame>buscarChave(@Param("p")String palavraChave);
 	
-	
+	public List<TipoGame> findAllByOrderByNomeAsc();
 }

@@ -23,13 +23,13 @@
         
 
 <div class="row">
-<h3 style="text-align: center; margin-top:100px; color:white;">Cadastro Jogo</h3>
+<h3 style="text-align: center; margin-top:100px; color:white;">Cadastro do Tipo do Jogo</h3>
     <form class="col s12" action="salvarGame" method="post">
     
       <div class="row">
         <div class="input-field col s6">
           <input name="nome" type="text" class="validate" th:value="${game?.nome}" required>
-          <label for="first_name">Insira o Nome do Jogo</label>
+          <label for="first_name">Insira o Tipo do Jogo</label>
         </div>
       </div>
       <div class="row">
@@ -41,7 +41,7 @@
       <div class="row">
         <div class="input-field col s6">
           <input name="descricao" type="text" class="validate" th:value="${game?.descricao}" required>
-          <label for="descricao">Insira a Descrição do Jogo</label>
+          <label for="descricao">Insira a Descrição do Tipo do Jogo</label>
         </div>
       </div>
     

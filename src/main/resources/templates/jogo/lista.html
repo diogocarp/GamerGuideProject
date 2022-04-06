@@ -13,32 +13,46 @@
 </head>
 <body>
 
-<div th:replace="fragments/padraoGame :: cabecalho"></div>
+<div th:replace="fragments/padraoJogo :: cabecalho"></div>
 
 
 
 <section>
-	<div class="formulario">
+	<div class="formulario"  style="width:90% !important; margin-left: 5% !important;">
 	  <table>
         <thead>
           <tr>
               <th>Id</th>
               <th>Nome</th>
               <th>Descrição</th>
-              <th>Palavras-Chave</th>
+              <th>Tipo</th>
+              <th>Requesitos</th>
+              <th>Classificação</th>
+              <th>Crossplay</th>
+              <th>Multiplayer</th>
+            	
+        		
               <th>Excluir</th>
               <th>Alterar</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr th:each="game:${games}">
-            <td th:text="${game.id}"></td>
-            <td th:text="${game.nome}"></td>
-            <td th:text="${game.descricao}"></td>
-            <td th:text="${game.palavraChave}"></td>
-            <td><a th:href="@{/excluirGame(id=${game.id})}">Excluir</a></td>
-		<td><a th:href="@{/alterarGame(id=${game.id})}">Alterar</a></td>
+          <tr th:each="jogo:${jogos}">
+            <td th:text="${jogo.id}"></td>
+            <td th:text="${jogo.nome}"></td>
+            <td th:text="${jogo.descricao}"></td>
+            <td th:text="${jogo.tipo}"></td>
+            <td th:text="${jogo.requisitos}"></td>
+            <td th:text="${jogo.classificacao}"></td>
+            <td th:text="${jogo.crossplay}"></td>
+            <td th:text="${jogo.multiplayer}"></td>
+            <td th:text="${jogo.fotos}"></td>
+            
+            
+            
+            <td><a th:href="@{/excluirJogo(id=${jogo.id})}">Excluir</a></td>
+		<td><a th:href="@{/alterarJogo(id=${jogo.id})}">Alterar</a></td>
             
           </tr>
         
