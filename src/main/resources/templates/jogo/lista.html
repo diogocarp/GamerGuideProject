@@ -42,7 +42,7 @@
             <td th:text="${jogo.id}"></td>
             <td th:text="${jogo.nome}"></td>
             <td th:text="${jogo.descricao}"></td>
-            <td th:text="${jogo.tipo}"></td>
+            <td th:text="${jogo.tipo?.nome}"></td>
             <td th:text="${jogo.requisitos}"></td>
             <td th:text="${jogo.classificacao}"></td>
             <td th:text="${jogo.crossplay}"></td>

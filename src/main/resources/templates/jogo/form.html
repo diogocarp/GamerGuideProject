@@ -18,7 +18,7 @@
 <style>
 .page-footer{
 
-    margin-top: 45	% !important;
+    margin-top: 45% !important;
 
 }
 
@@ -39,8 +39,8 @@
 
 <div class="row">
 <h3 style="text-align: center; margin-top:100px; color:white;">Cadastro Jogo</h3>
-    <form class="col s12" action="salvarJogo" method="post">
-    
+    <form class="col s12" action="salvarJogo" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    <input type="hidden" th:value="${jogo?.id}" name="id">
       <div class="row">
         <div class="input-field col s6">
           <input name="nome" type="text" class="validate" th:value="${jogo?.nome}" required>
@@ -57,8 +57,8 @@
       </div>
       <div class="row">
       <label for="tipos">Selecione o Tipo do Jogo</label>
-      <select class="browser-default" name="tipos.id" >
-  		 <option th:each="t: ${tipos}" th:text="${t.nome}" th:value="${t.id}"></option>
+      <select class="browser-default" name="tipo.id" >
+  		 <option th:each="t: ${tipos}" th:text="${t.nome}" th:value="${t.id}" th:selected="${t.id == restaurant?.tipo?.id}"></option>
     	
   	</select>
     </div>
@@ -77,28 +77,29 @@
       <div class="file-field input-field">
       <div class="btn">
         <span>Insira as Fotos</span>
-        <input type="file">
+        <input type="file" multiple
+        accept="image/*" name="fileFotos">
       </div>
       <div class="file-path-wrapper">
-        <input class="file-path validate" style="width:36% !important; " type="text">
+        <input class="file-path validate" style="width:36% !important;" type="text" >
       </div>
     </div>
       <p>
       <label>
-        <input type="checkbox" />
+        <input type="checkbox" name="multiplayer" />
         <span>Tem Multiplayer?</span>
       </label>
     </p>
     <p>
       <label>
-        <input type="checkbox" />
+        <input type="checkbox" name="crossplay" />
         <span>Tem Crossplay?</span>
       </label>
     </p>
       
     
       
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <button class="btn waves-effect waves-light" type="submit">Enviar
     <i class="material-icons right">play_arrow</i>
     <br>
     

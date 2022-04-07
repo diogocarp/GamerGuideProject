@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.senai.sp.cfp138.gamerguide.model.Game;
 import br.senai.sp.cfp138.gamerguide.repository.GameRepository;
@@ -36,8 +38,9 @@ public class JogoController {
 		}
 		
 		@RequestMapping(value = "salvarJogo",method = RequestMethod.POST )
-		public String salvarJogo(Game jogo) {
-			repTipo.save(jogo);
+		public String salvarJogo(Game jogo, @RequestParam("fileFotos") MultipartFile[] fileFotos) {
+			System.out.println(fileFotos.length);
+			//repTipo.save(jogo);
 			return "redirect:listarJogo/1";
 			
 			
