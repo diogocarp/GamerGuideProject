@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 	.pagination{
-		position:absolute;
-		top:90%;
-		left:43%;
+		position:relative;
+		top:250px;
+		text-align: center;
 		
 		
 	

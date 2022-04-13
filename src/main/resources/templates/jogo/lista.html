@@ -30,7 +30,7 @@
               <th>Classificação</th>
               <th>Crossplay</th>
               <th>Multiplayer</th>
-            	
+            	<th>Fotos</th>
         		
               <th>Excluir</th>
               <th>Alterar</th>
@@ -47,10 +47,7 @@
             <td th:text="${jogo.classificacao}"></td>
             <td th:text="${jogo.crossplay}"></td>
             <td th:text="${jogo.multiplayer}"></td>
-            <td th:text="${jogo.fotos}"></td>
-            
-            
-            
+          	<td style="display: flex !important"><img style="width: 150px; margin-left:2%;" th:each="foto: ${jogo.verFotos()}" th:src="${foto}" alt=""></td>
             <td><a th:href="@{/excluirJogo(id=${jogo.id})}">Excluir</a></td>
 		<td><a th:href="@{/alterarJogo(id=${jogo.id})}">Alterar</a></td>
             

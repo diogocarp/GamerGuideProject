@@ -7,14 +7,18 @@ import java.util.UUID;
 import org.hibernate.query.criteria.internal.expression.function.SubstringFunction;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 
-
+@Service
 public class FireBaseUtil {
 
 	//variavel para guardar as credenciais da firebase
@@ -27,7 +31,7 @@ public class FireBaseUtil {
 	
 	// constante para o nome do bucket
 	
-	private final String BUCKET_NAME = "gamerguide-5d8d9.appspot.com/";
+	private final String BUCKET_NAME = "gamerguide-5d8d9.appspot.com";
 	
 	// constante para o prefixo da URL 
 	
@@ -62,14 +66,22 @@ public class FireBaseUtil {
 		}
 	}
 	
-	public String uploadFile(MultipartFile arquivo) {
+	public String uploadFile(MultipartFile arquivo) throws IOException {
 		// gera uma String aleatoria para o nome do arquivo 
 		String nomeArquivo = UUID.randomUUID().toString() +
 				getExtensao(arquivo.getOriginalFilename());
 		
+		// criar um BlobId
+		BlobId blobId = BlobId.of(BUCKET_NAME, nomeArquivo);
 		
+		// criar um BlobInfo a partir do BlobId
+		BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
 		
-		return nomeArquivo;
+		// manda o blobInfo para Storage passando os bytes do arquivo
+		storage.create(blobInfo, arquivo.getBytes());
+		
+		// retornar a URL para acessar o arquivo
+		return String.format(DOWNLOAD_URL, nomeArquivo);
 		
 	}
 	
@@ -82,5 +94,25 @@ public class FireBaseUtil {
 		return nomeArquivo.substring(nomeArquivo.lastIndexOf('.'));
 		
 	}
+	
+	// metodo para excluir a foto do Firebase
+	
+	public void deletar(String nomeArquivo) {
+		
+		// retira o prefixo e sufixo do nome arquivo
+		
+		nomeArquivo = nomeArquivo.replace(PREFIX, "").replace(SUFFIX, "");
+		
+		// pega um blob através do nome do arquivo
+		
+		Blob blob = storage.get(BlobId.of(BUCKET_NAME, nomeArquivo));
+		
+		// deleta o arquivo
+		storage.delete(blob.getBlobId());
+		
+	}
+	
+	
+	
 	
 }

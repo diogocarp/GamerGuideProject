@@ -81,22 +81,37 @@
         accept="image/*" name="fileFotos">
       </div>
       <div class="file-path-wrapper">
-        <input class="file-path validate" style="width:36% !important;" type="text" >
+        <input  class="file-path validate" style="width:36% !important;" type="text" >
       </div>
     </div>
       <p>
       <label>
-        <input type="checkbox" name="multiplayer" />
+        <input type="checkbox" name="multiplayer" th:checked="${jogo?.multiplayer}" />
         <span>Tem Multiplayer?</span>
       </label>
     </p>
     <p>
       <label>
-        <input type="checkbox" name="crossplay" />
+        <input type="checkbox" name="crossplay" th:checked="${jogo?.crossplay}" />
         <span>Tem Crossplay?</span>
       </label>
     </p>
-      
+     <div th:if="${jogo?.fotos?.length > 0}">
+     		<h6 style="color:white">Fotos Cadastradas</h6>
+     	<div>
+     		<ul>
+     			<li th:each="foto, i : ${jogo.verFotos()}">
+     			<a th:href="${foto}" target="blank"><img style="width: 150px; margin-left:2%;" th:src="${foto}" alt="imagens"></a>
+     			<a th:href="@{/excluirFotoJogo(idJogo=${jogo.id}, numFoto = ${i.index})}">
+     			<i class="material-icons">delete_forever</i>
+     			
+     			</a>
+     			
+     		
+     		</ul>
+     	
+     	</div>
+     </div> 
     
       
       <button class="btn waves-effect waves-light" type="submit">Enviar

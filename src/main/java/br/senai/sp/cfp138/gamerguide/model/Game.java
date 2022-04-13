@@ -28,4 +28,14 @@ public class Game {
 	private boolean crossplay;
 	private boolean multiplayer;
 	
+	public String[] verFotos() {
+		
+		return this.fotos.split(";");
+		
+	}
+	
+	
+	
+	
+	
 }
