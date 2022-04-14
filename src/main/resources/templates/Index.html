@@ -14,9 +14,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
-	<div th:replace="fragments/padraoJogo :: cabecalho"></div>
+	<div th:replace="fragments/padraoTodos :: cabecalho"></div>
 	<nav>
     <div class="nav-wrapper">
       <form action="buscarGame" method="get">
@@ -29,16 +31,30 @@
       </form>
     </div>
   </nav>
-  
-  
 <section>
 		
-	
+		<div>
+		<h3 style="text-align: center; margin-top:100px; color:white;">Login Administrador</h3>
+		<form class="col s12" style="margin-top:70px; margin-left:50px;" method="post" action="login">
+		 <div class="input-field col s6">
+          <input name="email" type="text" class="validate" style="width:250% !important">
+          <label for="last_name">E-mail</label>
+        </div>
+         <div class="input-field col s6">
+          <input name="senha" type="password" class="validate" style="width:250% !important">
+          <label for="last_name">Senha</label>
+        </div>
+		 <button class="btn waves-effect waves-light" type="submit">Entrar
+   			<i class="material-icons right">play_arrow</i>
+   			<!-- <th block th:include="fragments/mensagem"></th:block>-->
+  			</button>
+		</form>
+		</div>
 	
 	
 	
 	
 	</section>
-	<footer th:replace="fragments/padrao :: rodape"></footer>
+	<footer th:replace="fragments/padraoTodos :: rodape"></footer>
 </body>
 </html>

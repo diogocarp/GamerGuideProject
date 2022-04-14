@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.senai.sp.cfp138.gamerguide.model.Game;
+import br.senai.sp.cfp138.gamerguide.model.TipoGame;
 import br.senai.sp.cfp138.gamerguide.repository.GameRepository;
 import br.senai.sp.cfp138.gamerguide.repository.JogoRepository;
 import br.senai.sp.cfp138.gamerguide.util.FireBaseUtil;
@@ -47,7 +48,7 @@ public class JogoController {
 		public String salvarJogo(Game jogo, @RequestParam("fileFotos") MultipartFile[] fileFotos) {
 			
 			// String para a url das fotos
-			String fotos = "";
+			String fotos = jogo.getFotos();
 			
 			System.out.println(fileFotos.length);
 			// percorrer cada arquivo que foi submetido no formulario
@@ -123,7 +124,14 @@ public class JogoController {
 	
 	@RequestMapping("excluirJogo")
 	public String excluirJogo(Long id) {
-			repTipo.deleteById(id);
+			Game jogo = repTipo.findById(id).get();
+			if(jogo.getFotos().length() > 0) {
+				for(String foto : jogo.verFotos()) {
+					
+					fireBaseUtil.deletar(foto);
+				}
+				repTipo.delete(jogo);
+			}
 			return "redirect:listarJogo/1";
 		
 		

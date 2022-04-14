@@ -40,6 +40,7 @@
 <div class="row">
 <h3 style="text-align: center; margin-top:100px; color:white;">Cadastro Jogo</h3>
     <form class="col s12" action="salvarJogo" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+    <input type="hidden" th:value="${jogo?.fotos}" name="fotos">
     <input type="hidden" th:value="${jogo?.id}" name="id">
       <div class="row">
         <div class="input-field col s6">
@@ -58,7 +59,7 @@
       <div class="row">
       <label for="tipos">Selecione o Tipo do Jogo</label>
       <select class="browser-default" name="tipo.id" >
-  		 <option th:each="t: ${tipos}" th:text="${t.nome}" th:value="${t.id}" th:selected="${t.id == restaurant?.tipo?.id}"></option>
+  		 <option th:each="t: ${tipos}" th:text="${t.nome}" th:value="${t.id}" th:selected="${t.id == jogo?.tipo?.id}"></option>
     	
   	</select>
     </div>

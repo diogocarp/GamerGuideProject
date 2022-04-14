@@ -3,6 +3,7 @@ package br.senai.sp.cfp138.gamerguide.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.senai.sp.cfp138.gamerguide.annotation.Publico;
 import br.senai.sp.cfp138.gamerguide.model.Administrador;
 import br.senai.sp.cfp138.gamerguide.repository.AdminRepository;
 import br.senai.sp.cfp138.gamerguide.util.HashUtil;
@@ -137,6 +139,42 @@ public class AdministradorController {
 			Administrador admin = repository.findById(id).get();
 			model.addAttribute("adm", admin);
 			return "forward:formAdm";
+			
+			
+		}
+		
+		@Publico
+		@RequestMapping("login")
+		public String login(Administrador admLogin, RedirectAttributes attr, HttpSession session) {
+			
+			// buscar o administrador no BD, através do e-mail e da senha
+			Administrador admin = repository.findByEmailAndSenha(admLogin.getEmail(), admLogin.getSenha());
+			
+			// verifica se o adm existe
+			if (admin == null) {
+				// avisa ao usuario
+				attr.addFlashAttribute("mensagemErro", "Login e/ou senha inválido(s)");
+				return "redirect:/";
+			}else {
+				
+			// se não for bulo, salva na sessão e acessa o sistema 
+				session.setAttribute("usuarioLogado", admin);
+				return "redirect:/listarJogo/1";
+				
+			}
+			
+		}
+		
+		
+		@RequestMapping("logout")
+		public String logout(HttpSession session) {
+			
+			// elimina o usario da session
+			session.invalidate();
+			
+			// retorna para a página inicial
+			
+			return "redirect:/";
 			
 			
 		}
