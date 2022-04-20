@@ -14,4 +14,6 @@ public interface GameRepository extends PagingAndSortingRepository<TipoGame, Lon
 	public List<TipoGame>buscarChave(@Param("p")String palavraChave);
 	
 	public List<TipoGame> findAllByOrderByNomeAsc();
+	
+	
 }

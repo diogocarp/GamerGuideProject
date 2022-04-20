@@ -24,17 +24,27 @@ public class AppInterceptor implements HandlerInterceptor {
 		
 		// verifica se  o handler é um HandlerMethod, o que indica que foi encontrado um método em algum Controller para a requisição
 		if(handler instanceof HandlerMethod) {
+			
 			// liberar o acesso a página inicial
 			if(uri.equals("/")) {
+				
 				return true;
 				
 			}
 			if(uri.endsWith("/error")) {
 				
 				return true;
+				
 			}
 			// fazer o casting para HandlerMethod 
 			HandlerMethod metodoChamado = (HandlerMethod) handler;
+			
+			if(uri.startsWith("/api")){
+				
+				return true;
+				
+				
+			}else {
 			
 			// se o metodo for publico libera 
 			if(metodoChamado.getMethodAnnotation(Publico.class) != null)  {
@@ -49,11 +59,10 @@ public class AppInterceptor implements HandlerInterceptor {
 				// redireciona para a pagina inicial
 				response.sendRedirect("/");
 				
-			}
+				}
 			
+			}
 		}
-		
-		
 		
 		return true;
 	}
