@@ -15,5 +15,8 @@ public interface JogoRepository extends PagingAndSortingRepository<Game, Long>{
 	public List<Game> findByMultiplayer(boolean a);
 	
 	public List<Game> findByCrossplay(boolean b);
+	
+	
+	
 
 }
